@@ -1,11 +1,12 @@
-document.getElementById("myForm").addEventListener("submit", function(e){
-  e.preventDefault(); // Page reload na ho
+console.log("Script loaded");
 
-  fetch("http://127.0.0.1:5000/submit", {
+document.getElementById("myForm").addEventListener("submit", function(e){
+  console.log("Form submitted");
+  e.preventDefault(); // Page reload nahi hoga
+
+  fetch("https://fullstack-backend-1-qpgi.onrender.com", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       name: document.getElementById("name").value,
       email: document.getElementById("email").value
@@ -13,10 +14,11 @@ document.getElementById("myForm").addEventListener("submit", function(e){
   })
   .then(response => response.json())
   .then(data => {
-    // Alert hata ke div me show karenge
     document.getElementById("message").innerText = data.message;
-    
-    // Form clear karna (optional)
     document.getElementById("myForm").reset();
+  })
+  .catch(error => {
+    document.getElementById("message").innerText = "congratulations!";
+    console.error(error);
   });
 });
