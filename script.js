@@ -4,7 +4,7 @@ document.getElementById("myForm").addEventListener("submit", function(e){
   console.log("Form submitted");
   e.preventDefault(); // Page reload nahi hoga
 
-  fetch("https://fullstack-backend-1-qpgi.onrender.com", {
+  fetch("https://fullstack-backend-1-qpgi.onrender.com/submit", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
